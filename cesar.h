@@ -20,4 +20,4 @@
 *                                                                             *
 ******************************************************************************/
 
-
+void chiffrerCesar(char message[], size_t tailleMessage, size_t decalage);
