@@ -19,5 +19,10 @@
 *  Nom du fichier : cesar.h                                                 *
 *                                                                             *
 ******************************************************************************/
+#ifndef CESAR_H
+#define CESAR_H
 
-void chiffrerCesar(char message[], size_t tailleMessage, size_t decalage);
+int chiffrerCesar(char message[], int decalage);
+int dechiffrerCesar(char message[], int decalage);
+
+#endif

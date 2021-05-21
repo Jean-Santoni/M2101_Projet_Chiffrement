@@ -19,6 +19,13 @@
 *  Nom du fichier : utils.h                                                 *
 *                                                                             *
 ******************************************************************************/
+#ifndef UTILS_H
+#define UTILS_H
 
-char table_alphabet[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T','U', 'V', 'W', 'X', 'Y', 'Z'};
+#define TAILLE_STATUS_ERREUR 100
 
+char rotation(char lettre, int decalage);
+char indiceAlphabet(char lettre);
+void set_erreur(char message[]);
+char* get_erreur();
+#endif

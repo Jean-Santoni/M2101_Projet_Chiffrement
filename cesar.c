@@ -20,21 +20,21 @@
 *  Nom du fichier : cesar.c                                                 *
 *                                                                             *
 ******************************************************************************/
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 
+#include <string.h>
 #include "cesar.h"
 #include "utils.h"
 
-void chiffrerCesar(char message[], size_t tailleMessage, size_t decalage) {
-	for (int i = 0; i<tailleMessage; i++) {
-			if (isupper(message[i])) {
-				message[i]-= 65; //mettre la lettre entre 0 et 25 pour coller à l'index de la table (majuscule)
-				message[i] = table_alphabet[((message[i] + decalage) % 26)];
-			} else if (islower(message[i])) {
-				message[i]-= 97; //mettre la lettre entre 0 et 25 pour coller à l'index de la table (minuscule)
-				message[i] = tolower(table_alphabet[((message[i] + decalage) % 26)]);
-			}	
+int chiffrerCesar(char message[], int decalage) {
+	//vérifier avec fonction verifierAlphanumerique() et retourner 0 si pas bon
+	for (int i = 0; i<strlen(message); i++) {
+			message[i] = rotation(message[i], decalage);
 	}
+	return 1;
+}
+
+int dechiffrerCesar(char message[], int decalage) {
+	//vérifier avec fonction verifierAlphanumerique() et retourner 0 si pas bon
+	chiffrerCesar(message, -decalage);
+	return 1;
 }

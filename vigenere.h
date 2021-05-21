@@ -21,3 +21,5 @@
 ******************************************************************************/
 
 
+int chiffrerVigenere(char message[], char cle[]);
+int dechiffrerVigenere(char message[], char cle[]);
