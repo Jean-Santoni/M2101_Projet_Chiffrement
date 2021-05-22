@@ -34,7 +34,7 @@ void main() {
 	if (chiffrerCesar(msg, 3)) {
 		printf("Message chiffré avec le chiffrement de césar (décalage 3) : %s\n", msg);
 	} else {
-		fprintf(stderr, "Erreur lors du chiffrement de César\n");
+		fprintf(stderr, "Erreur lors du chiffrement de César: %s \n",get_erreur());
 	}
 		
 	if (dechiffrerCesar(msg, 3)) {

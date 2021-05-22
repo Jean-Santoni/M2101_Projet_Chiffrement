@@ -59,3 +59,14 @@ void set_erreur(char message[]) {
 char* get_erreur() {
 	return status_erreur;
 }
+int verifierAlphanumerique(char chaine[]){
+	for(int i= 0; i<strlen(chaine); i++){
+		if( !isalpha(chaine[i])){
+			if(chaine[i]!=' '){//Ignorer les espaces
+				set_erreur("La chaine de caractères contient des caractères qui ne sont pas des lettres");
+				return 0;
+		 	 }
+		}
+	}
+	return 1;
+}

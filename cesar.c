@@ -26,7 +26,9 @@
 #include "utils.h"
 
 int chiffrerCesar(char message[], int decalage) {
-	//vérifier avec fonction verifierAlphanumerique() et retourner 0 si pas bon
+	if (!verifierAlphanumerique(message)){
+		return 0;
+	}
 	for (int i = 0; i<strlen(message); i++) {
 			message[i] = rotation(message[i], decalage);
 	}
@@ -34,7 +36,9 @@ int chiffrerCesar(char message[], int decalage) {
 }
 
 int dechiffrerCesar(char message[], int decalage) {
-	//vérifier avec fonction verifierAlphanumerique() et retourner 0 si pas bon
+	if (!verifierAlphanumerique(message)){
+		return 0;
+	}
 	chiffrerCesar(message, -decalage);
 	return 1;
 }

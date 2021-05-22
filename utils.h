@@ -28,4 +28,5 @@ char rotation(char lettre, int decalage);
 char indiceAlphabet(char lettre);
 void set_erreur(char message[]);
 char* get_erreur();
+int verifierAlphanumerique(char chaine[]);
 #endif

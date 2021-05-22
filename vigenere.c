@@ -26,9 +26,11 @@
 #include "vigenere.h"
 
 int chiffrerVigenere(char message[], char cle[]) {
-	//vérifier avec fonction verifierAlphanumerique() et retourner 0 si pas bon
+	if(!verifierAlphanumerique(message)){
+		return 0;
+	}
 	if (!verifierCleVigenere(cle)) {
-		set_erreur("La cle ne doit pas contenir d'espaces");
+		
 		return 0;
 	}
 	int y = 0;
@@ -44,9 +46,10 @@ int chiffrerVigenere(char message[], char cle[]) {
 }
 	
 int dechiffrerVigenere(char message[], char cle[]) {
-	//vérifier avec fonction verifierAlphanumerique() et retourner 0 si pas bon
+	if(!verifierAlphanumerique(message)){
+		return 0;
+	}
 	if (!verifierCleVigenere(cle)) {
-		set_erreur("La cle ne doit pas contenir d'espaces");
 		return 0;
 	}
 	
@@ -63,8 +66,12 @@ int dechiffrerVigenere(char message[], char cle[]) {
 };
 
 int verifierCleVigenere(char cle[]) {
+	if(!verifierAlphanumerique(cle)){
+		return 0;
+	}
 	for (int i = 0; i<strlen(cle); i++) { //vérifier la clé 
 		if (cle[i] == ' ') {
+	    	set_erreur("La cle ne doit pas contenir d'espaces"); 
 			return 0;
 		}
 	}
