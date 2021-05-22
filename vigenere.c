@@ -27,11 +27,9 @@
 
 int chiffrerVigenere(char message[], char cle[]) {
 	//vérifier avec fonction verifierAlphanumerique() et retourner 0 si pas bon
-	for (int i = 0; i<strlen(cle); i++) { //vérifier la clé
-		if (cle[i] == ' ') {
-			set_erreur("La cle ne doit pas contenir d'espaces");
-			return 0;
-		}
+	if (!verifierCleVigenere(cle)) {
+		set_erreur("La cle ne doit pas contenir d'espaces");
+		return 0;
 	}
 	int y = 0;
 	for (int i = 0; i<strlen(message); i++) {
@@ -46,12 +44,12 @@ int chiffrerVigenere(char message[], char cle[]) {
 }
 	
 int dechiffrerVigenere(char message[], char cle[]) {
-	for (int i = 0; i<strlen(cle); i++) { //vérifier la clé 
-		if (cle[i] == ' ') {
-			set_erreur("La cle ne doit pas contenir d'espaces");
-			return 0;
-		}
+	//vérifier avec fonction verifierAlphanumerique() et retourner 0 si pas bon
+	if (!verifierCleVigenere(cle)) {
+		set_erreur("La cle ne doit pas contenir d'espaces");
+		return 0;
 	}
+	
 	int y = 0;
 	for (int i = 0; i<strlen(message); i++) {
 		if (message[i] != ' ') { //ne pas dechiffrer les espaces 
@@ -64,4 +62,11 @@ int dechiffrerVigenere(char message[], char cle[]) {
 	return 1;
 };
 
-
+int verifierCleVigenere(char cle[]) {
+	for (int i = 0; i<strlen(cle); i++) { //vérifier la clé 
+		if (cle[i] == ' ') {
+			return 0;
+		}
+	}
+	return 1;
+}
