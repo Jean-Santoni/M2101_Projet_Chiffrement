@@ -19,8 +19,11 @@
 *  Nom du fichier : vigenere.h                                                 *
 *                                                                             *
 ******************************************************************************/
+#ifndef VIGENERE_H
+#define VIGENERE_H
 
+int chiffrerVigenere(wchar_t message[], wchar_t cle[]);
+int dechiffrerVigenere(wchar_t message[], wchar_t cle[]);
+int verifierCleVigenere(wchar_t cle[]);
 
-int chiffrerVigenere(char message[], char cle[]);
-int dechiffrerVigenere(char message[], char cle[]);
-int verifierCleVigenere(char cle[]);
+#endif

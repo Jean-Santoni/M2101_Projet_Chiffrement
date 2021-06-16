@@ -1,4 +1,3 @@
-
 /******************************************************************************
 *  ASR => M2101                                                               *
 *******************************************************************************
@@ -22,23 +21,24 @@
 ******************************************************************************/
 
 #include <string.h>
+#include <stdio.h>
+#include <wchar.h>
 #include "cesar.h"
 #include "utils.h"
 
-int chiffrerCesar(char message[], int decalage) {
-	if (!verifierAlphanumerique(message)){
+int chiffrerCesar(wchar_t message[], int decalage) {
+	if (!verifierAlphanumerique(message))
 		return 0;
-	}
-	for (int i = 0; i<strlen(message); i++) {
+	
+	for (int i = 0; i<wcslen(message); i++) 
 			message[i] = rotation(message[i], decalage);
-	}
 	return 1;
 }
 
-int dechiffrerCesar(char message[], int decalage) {
-	if (!verifierAlphanumerique(message)){
+int dechiffrerCesar(wchar_t message[], int decalage) {
+	if (!verifierAlphanumerique(message))
 		return 0;
-	}
+		
 	chiffrerCesar(message, -decalage);
 	return 1;
 }

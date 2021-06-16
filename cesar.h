@@ -22,7 +22,7 @@
 #ifndef CESAR_H
 #define CESAR_H
 
-int chiffrerCesar(char message[], int decalage);
-int dechiffrerCesar(char message[], int decalage);
+int chiffrerCesar(wchar_t message[], int decalage);
+int dechiffrerCesar(wchar_t message[], int decalage);
 
 #endif

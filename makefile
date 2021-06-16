@@ -13,9 +13,10 @@ main: ${BINAIRES}
 %.o: %.c utils.h
 %.o: %.c cesar.h
 %.o: %.c vigenere.h
+
 #${GCC} -c utils.c
 	${GCC} -c $<
 	
 clean:
-	rm main
 	rm *.o
+	rm main

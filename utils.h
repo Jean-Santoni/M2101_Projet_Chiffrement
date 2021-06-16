@@ -22,11 +22,14 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#define TAILLE_STATUS_ERREUR 100
+#define TAILLE_STATUS_ERREUR 300
 
-char rotation(char lettre, int decalage);
-char indiceAlphabet(char lettre);
+wchar_t rotation(wchar_t lettre, int decalage);
+wchar_t indiceAlphabet(wchar_t lettre);
 void set_erreur(char message[]);
 char* get_erreur();
-int verifierAlphanumerique(char chaine[]);
+int verifierAlphanumerique(wchar_t chaine[]);
+void convertirAccent(wchar_t chaine[]);
+
+
 #endif
