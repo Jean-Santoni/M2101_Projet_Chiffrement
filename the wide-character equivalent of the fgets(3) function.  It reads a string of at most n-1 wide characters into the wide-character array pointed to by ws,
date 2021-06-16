@@ -1,0 +1,49 @@
+FGETWS(3)                                                                       Linux Programmer's Manual                                                                       FGETWS(3)
+
+NNAAMMEE
+       fgetws - read a wide-character string from a FILE stream
+
+SSYYNNOOPPSSIISS
+       ##iinncclluuddee <<wwcchhaarr..hh>>
+
+       wwcchhaarr__tt **ffggeettwwss((wwcchhaarr__tt **_w_s,, iinntt _n,, FFIILLEE **_s_t_r_e_a_m));;
+
+DDEESSCCRRIIPPTTIIOONN
+       The ffggeettwwss() function is the wide-character equivalent of the ffggeettss(3) function.  It reads a string of at most _n_-_1 wide characters into the wide-character array pointed to by _w_s,
+       and adds a terminating null wide character (L'\0').  It stops reading wide characters after it has encountered and stored a newline wide character.  It also  stops  when  end  of
+       stream is reached.
+
+       The programmer must ensure that there is room for at least _n wide characters at _w_s.
+
+       For a nonlocking counterpart, see uunnlloocckkeedd__ssttddiioo(3).
+
+RREETTUURRNN VVAALLUUEE
+       The ffggeettwwss() function, if successful, returns _w_s.  If end of stream was already reached or if an error occurred, it returns NULL.
+
+AATTTTRRIIBBUUTTEESS
+       For an explanation of the terms used in this section, see aattttrriibbuutteess(7).
+
+       ┌──────────┬───────────────┬─────────┐
+       │IInntteerrffaaccee │ AAttttrriibbuuttee     │ VVaalluuee   │
+       ├──────────┼───────────────┼─────────┤
+       │ffggeettwwss()  │ Thread safety │ MT-Safe │
+       └──────────┴───────────────┴─────────┘
+CCOONNFFOORRMMIINNGG TTOO
+       POSIX.1-2001, POSIX.1-2008, C99.
+
+NNOOTTEESS
+       The behavior of ffggeettwwss() depends on the LLCC__CCTTYYPPEE category of the current locale.
+
+       In the absence of additional information passed to the ffooppeenn(3) call, it is reasonable to expect that ffggeettwwss() will actually read a multibyte string from the stream and then con‐
+       vert it to a wide-character string.
+
+       This function is unreliable, because it does not permit to deal properly with null wide characters that may be present in the input.
+
+SSEEEE AALLSSOO
+       ffggeettwwcc(3), uunnlloocckkeedd__ssttddiioo(3)
+
+CCOOLLOOPPHHOONN
+       This page is part of release 5.05 of the Linux _m_a_n_-_p_a_g_e_s project.  A description of the project, information about reporting bugs, and the latest version of  this  page,  can  be
+       found at https://www.kernel.org/doc/man-pages/.
+
+GNU                                                                                     2019-03-06                                                                              FGETWS(3)
