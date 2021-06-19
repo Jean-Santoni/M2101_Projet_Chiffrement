@@ -154,6 +154,6 @@ void convertirAccent(wchar_t chaine[]);
 
 ## Créateurs
 
-### Lacoste pierre
+### Lacoste Pierre
 
 ### Santoni Jean
