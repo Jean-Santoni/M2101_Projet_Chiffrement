@@ -18,7 +18,7 @@ Le programme est sous la forme d'un menu demandant à l'utilisateur de faire des
 
 Le premier écran est sous cette forme:
 
-```bash
+```
 Bienvenue sur la machine à chiffrer !
 
 Que voulez vous faire ?
