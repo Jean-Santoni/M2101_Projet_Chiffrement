@@ -46,7 +46,7 @@ wchar_t rotation(wchar_t lettre, int decalage) {
 	return table_alphabet[indice];
 }
 
-wchar_t indiceAlphabet(wchar_t lettre) {
+int indiceAlphabet(wchar_t lettre) {
 	if (isupper(lettre))
 		return lettre - 65; //mettre la lettre entre 0 et 25 pour coller à l'index de la table (majuscule)
 	if (islower(lettre))

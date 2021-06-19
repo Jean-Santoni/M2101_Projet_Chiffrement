@@ -31,23 +31,9 @@
 
 #define TAILLE_MAX_TEXTE 1000
 
-//Ces procedure évite la réutilisation de bout de code
-void entreeChiffreUtilisateur(int* choix) { 
-	*choix = 0;
-	while (*choix == 0) {
-		if (wscanf(L"%d", choix) != 1) {
-			wprintf(L"Erreur, veuillez entrer un chiffre\n");
-			while ((getwchar()) != '\n'); //nettoyer le cache
-			*choix = 0;
-		}
-	}
-	//while ((getwchar()) != '\n'); //nettoyer (encore) le cache (éviter les dépassements)
-}
-
-void entreeTexteUtilisateur(wchar_t inputTexte[TAILLE_MAX_TEXTE]) { 
-	fgetws(inputTexte,TAILLE_MAX_TEXTE,stdin);
-	inputTexte[wcslen(inputTexte)-1] = L'\0'; // retirer le \n
-}
+//Ces 2 procedures évitent la réutilisation de code
+void entreeChiffreUtilisateur(int* choix);
+void entreeTexteUtilisateur(wchar_t inputTexte[TAILLE_MAX_TEXTE]);
 
 void main() {
 	/// INITIALISATION LOCALE
@@ -101,12 +87,11 @@ void main() {
 			    if ((fp = fopen(asciiNomFichier, "w")) == NULL) {
 			   	     wprintf(L"Erreur lors de la création du fichier, assurez vous d'avoir les droits suffisants ou d'avoir entré un nom valide\n");
 				} else {
-					///RECUPERER LE TEMPS ACTUEL
+					///RECUPERER LE TEMPS ACTUEL ET L'INSCRIRE DANS LE FICHIER
 					time_t t = time(NULL);
 					struct tm *tm = localtime(&t);
 					char temps_actuel[64];
 					strftime(temps_actuel, sizeof(temps_actuel), "%c", tm);
-					///
 					fwprintf(fp, L"------RAPPORT DU %s------\n", temps_actuel);
 				}
 				
@@ -120,18 +105,17 @@ void main() {
 				wprintf(L"Entrez votre clé (CESAR)\n---------------------\n");
 				entreeChiffreUtilisateur(&inputCleCesar);
 				if (enregistrerDansFichier) {
-					fwprintf(fp, L"###### ACTION %d ######\nchiffrement: CESAR\n", nombreActions);
+					fwprintf(fp, L"\n###### ACTION %d ######\nchiffrement: CESAR\n", nombreActions);
 					nombreActions++;
 				}
 				if (choix == 1) {
-					
 					if (chiffrerCesar(inputTexte, inputCleCesar)) {
 						wprintf(L"\n\n	Message chiffré avec le chiffrement de césar (décalage %d) : %ls\n\n\n", inputCleCesar, inputTexte);
 						if (enregistrerDansFichier) {
 							fwprintf(fp, L"Message chiffré avec le chiffrement de césar (décalage %d) : %ls\n", inputCleCesar, inputTexte);
 						}
 					} else {
-						fprintf(stderr, "Erreur lors du chiffrement de César: %s \n",get_erreur());
+						fprintf(stderr, "\n\n Erreur lors du chiffrement de César: %s \n\n\n",get_erreur());
 						if (enregistrerDansFichier) {
 							fwprintf(fp, L"Erreur lors du chiffrement de César: %s \n",get_erreur());
 						}
@@ -143,7 +127,7 @@ void main() {
 							fwprintf(fp, L"Message déchiffré avec le chiffrement de césar (décalage %d) : %ls\n", inputCleCesar, inputTexte);
 						}
 					} else {
-						fprintf(stderr, "Erreur lors du déchiffrement de César: %s \n",get_erreur());
+						fprintf(stderr, "\n\n Erreur lors du déchiffrement de César: %s \n\n\n",get_erreur());
 						if (enregistrerDansFichier) {
 							fwprintf(fp, L"Erreur lors du déchiffrement de César: %s \n",get_erreur());
 						}
@@ -156,17 +140,17 @@ void main() {
 				wprintf(L"Entrez votre clé (VIGENERE)\n---------------------\n");
 				entreeTexteUtilisateur(inputCleVigenere);
 				if (enregistrerDansFichier) {
-					fwprintf(fp, L"###### ACTION %d ######\nchiffrement: VIGENERE\n", nombreActions);
+					fwprintf(fp, L"\n###### ACTION %d ######\nchiffrement: VIGENERE\n", nombreActions);
 					nombreActions++;
 				}
 				if (choix == 3) {
 					if (chiffrerVigenere(inputTexte, inputCleVigenere)) {
 						wprintf(L"\n\n	Message chiffré avec le chiffrement de Vigenère (clé %ls) : %ls\n\n\n", inputCleVigenere, inputTexte);
 						if (enregistrerDansFichier) {
-							fwprintf(fp, L"Message chiffré avec le chiffrement de Vigenère (clé %ls) : %ls\n\n\n", inputCleVigenere, inputTexte);
+							fwprintf(fp, L"Message chiffré avec le chiffrement de Vigenère (clé %ls) : %ls\n", inputCleVigenere, inputTexte);
 						}
 					} else {
-						fprintf(stderr, "Erreur lors du chiffrement de Vigenère: %s \n",get_erreur());
+						fprintf(stderr, "\n\n Erreur lors du chiffrement de Vigenère: %s \n\n\n",get_erreur());
 						if (enregistrerDansFichier) {
 							fwprintf(fp, L"Erreur lors du chiffrement de Vigenère: %s \n",get_erreur());
 						}
@@ -175,10 +159,10 @@ void main() {
 					if (dechiffrerVigenere(inputTexte, inputCleVigenere)) {
 						wprintf(L"\n\n	Message déchiffré avec le chiffrement de Vigenère (clé %ls) : %ls\n\n\n", inputCleVigenere, inputTexte);
 						if (enregistrerDansFichier) {
-							fwprintf(fp, L"Message déchiffré avec le chiffrement de Vigenère (clé %ls) : %ls\n\n\n", inputCleVigenere, inputTexte);
+							fwprintf(fp, L"Message déchiffré avec le chiffrement de Vigenère (clé %ls) : %ls\n", inputCleVigenere, inputTexte);
 						}
 					} else {
-						fprintf(stderr, "Erreur lors du déchiffrement de Vigenère: %s \n",get_erreur());
+						fprintf(stderr, "\n\n Erreur lors du déchiffrement de Vigenère: %s \n\n\n",get_erreur());
 						if (enregistrerDansFichier) {
 							fwprintf(fp, L"Erreur lors du déchiffrement de Vigenère: %s \n",get_erreur());
 						}
@@ -191,4 +175,20 @@ void main() {
 		
 		etatChoix = 0; //Pour éviter une répétition infinie
 	}
+}
+
+void entreeChiffreUtilisateur(int* choix) { 
+	*choix = 0;
+	while (*choix == 0) {
+		if (wscanf(L"%d", choix) != 1) {
+			wprintf(L"Erreur, veuillez entrer un chiffre\n");
+			while ((getwchar()) != '\n'); //nettoyer le cache
+			*choix = 0;
+		}
+	}
+}
+
+void entreeTexteUtilisateur(wchar_t inputTexte[TAILLE_MAX_TEXTE]) { 
+	fgetws(inputTexte,TAILLE_MAX_TEXTE,stdin);
+	inputTexte[wcslen(inputTexte)-1] = L'\0'; // retirer le \n
 }
