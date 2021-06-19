@@ -1,7 +1,7 @@
 # Chiffrement de Messages
 Le But de ce projet est de créer un programme permettant de chiffrer et déchiffrer des messages avec les chiffrements de Vigenère et de César.
 
-##Construction du projet
+## Construction du projet
 Le projet utilise l'utilitaire make, pour constuire le projet, il suffit donc d'entrer la commande suivante dans votre terminal :
 
 ```bash
@@ -80,8 +80,8 @@ Voici un exemple de rapport:
 > Erreur lors du déchiffrement de Vigenère: La cle ne doit pas contenir d'espaces 
 > 
 
-##Signature des fonctions
-###cesar.h
+## Signature des fonctions
+### cesar.h
 ```C
 /* Cette fonction permet de chiffrer un tableau de caractères avec le chiffrement de César,
 elle prend un tableau de wchar_t et un entier en entrée représentant le message et le décalage (clé), 
@@ -95,7 +95,7 @@ le message est modifié et les lettres accentuées seront converties, le message
 accentués ainsi que des espaces. La fonction renvoie 1 en cas de succès, sinon elle renvoie 0 */
 int dechiffrerCesar(wchar_t message[], int decalage);
 ```
-###vigenere.h
+### vigenere.h
 ```C
 /* Cette fonction permet de chiffrer un tableau de caractères avec le chiffrement de Vigenère,
 elle prend deux tableau de wchar_t en entrée représentant le message et la clé, le message est modifié ainsi que
@@ -117,7 +117,7 @@ clé seront convertis dans tout les cas */
 int verifierCleVigenere(wchar_t cle[]);
 ```
 
-###utils.h
+### utils.h
 
 ```C
 /* Cette fonction permet de décaler un caractère de x caractères dans l'alphabet, 
@@ -152,8 +152,8 @@ entrée un tableau de wchar_t. Les accents pouvant être convertis sont les suiv
 void convertirAccent(wchar_t chaine[]);
 ```
 
-##Créateurs
+## Créateurs
 
-###Lacoste pierre
+### Lacoste pierre
 
-###Santoni Jean
+### Santoni Jean
